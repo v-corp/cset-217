@@ -76,10 +76,73 @@ case "$1" in
         echo -e "created the  projects for $username${NC}"
         ;;
 
+    "sys_report")
+        file="$2"
+        if [ -z "$file" ]; then
+            echo "need a file name bruh"
+            exit 1
+        fi
+
+        echo "system report" > $file
+        echo "time: $(date)" >> $file
+        echo "" >> $file
+        echo "disk stuff:" >> $file
+        df -h >> $file
+        echo "" >> $file
+        echo "mem stuff:" >> $file
+        free -h >> $file
+        echo "" >> $file
+        echo "cpu stuff:" >> $file
+        grep "model name" /proc/cpuinfo | head -1 | cut -d':' -f2 | sed 's/^ *//' >> $file
+        nproc >> $file
+        top -bn1 | grep "cpu" >> $file
+        echo "" >> $file
+        echo "big mem hogs:" >> $file
+        ps aux --sort=-%mem | head -6 | awk '{print $1 " " $3 " " $4 " " $11}' >> $file
+        echo "" >> $file
+        echo "big cpu hogs:" >> $file
+        ps aux --sort=-%cpu | head -6 | awk '{print $1 " " $3 " " $4 " " $11}' >> $file
+
+        echo "aded this in the give file:  $file"
+        ;;
+
+    "process_manage")
+        action="$2"
+
+        if [ -z "$action" ]; then
+            echo "Usage: $0 process_manage <action>"
+            echo "Actions: kill_stopped"
+            exit 1
+        fi
+
+        case "$action" in
+            "kill_stopped")
+                echo "killin stopped procs..."
+                stopped_pids=$(ps aux | awk '$8 ~ /^T/ {print $2}')
+
+                if [ -z "$stopped_pids" ]; then
+                    echo "no stopped procs found"
+                else
+                    for pid in $stopped_pids; do
+                        kill -9 "$pid" 2>/dev/null && echo "killed pid $pid"
+                    done
+                fi
+                ;;
+            *)
+                echo "dunno that action: $action"
+                exit 1
+                ;;
+        esac
+        ;;
+
     "help"|*)
         echo "Usage:"
         echo "  $0 add_users <file>"
         echo "  $0 setup_projects <username> <number>"
+        echo "  $0 sys_report <output_file>"
+        echo "  $0 process_manage <username> <action>"
+        echo ""
+        echo ""
         echo "  $0 help"
         ;;
 esac

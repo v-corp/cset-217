@@ -1,0 +1,49 @@
+=== System Monitoring Report ===
+Generated on: Thu Oct 16 10:11:32 AM IST 2025
+
+=== Disk Usage ===
+Filesystem        Size  Used Avail Use% Mounted on
+dev               3.8G     0  3.8G   0% /dev
+run               3.8G  1.8M  3.8G   1% /run
+efivarfs          184K  133K   47K  75% /sys/firmware/efi/efivars
+/dev/mapper/root  475G   17G  458G   4% /
+tmpfs             3.8G   27M  3.8G   1% /dev/shm
+tmpfs             1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+tmpfs             1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+tmpfs             1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+tmpfs             3.8G  7.3M  3.8G   1% /tmp
+/dev/mapper/root  475G   17G  458G   4% /var/log
+/dev/mapper/root  475G   17G  458G   4% /home
+/dev/mapper/root  475G   17G  458G   4% /var/cache/pacman/pkg
+/dev/nvme0n1p1    2.0G  101M  1.9G   5% /boot
+tmpfs             772M  148K  772M   1% /run/user/1000
+
+=== Memory Information ===
+               total        used        free      shared  buff/cache   available
+Mem:           7.5Gi       3.2Gi       3.5Gi       349Mi       1.5Gi       4.3Gi
+Swap:          3.8Gi       1.2Gi       2.5Gi
+
+=== CPU Information ===
+CPU Model:
+11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+CPU Cores:
+8
+CPU Usage:
+10.6us,1.2
+
+=== Top 5 Memory-Consuming Processes ===
+USER         %CPU   %MEM COMMAND
+vv           16.2   17.5 claude
+vv            6.1    2.7 claude
+vv            0.7    2.6 /usr/lib/chromium/chromium
+vv            0.0    2.2 /usr/bin/swayosd-server
+vv            0.0    2.0 /usr/bin/alacritty
+
+=== Top 5 CPU-Consuming Processes ===
+USER         %CPU   %MEM COMMAND
+vv           16.2   17.5 claude
+vv            6.1    2.7 claude
+vv            2.0    1.8 /usr/lib/libreoffice/program/soffice.bin
+vv            1.9    1.0 Hyprland
+root          1.8    0.0 [kworker/u32:14-btrfs-endio]
+

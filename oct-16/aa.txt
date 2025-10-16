@@ -1,0 +1,52 @@
+system report
+time: Thu Oct 16 10:13:13 AM IST 2025
+
+disk stuff:
+Filesystem        Size  Used Avail Use% Mounted on
+dev               3.8G     0  3.8G   0% /dev
+run               3.8G  1.8M  3.8G   1% /run
+efivarfs          184K  133K   47K  75% /sys/firmware/efi/efivars
+/dev/mapper/root  475G   17G  458G   4% /
+tmpfs             3.8G   27M  3.8G   1% /dev/shm
+tmpfs             1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+tmpfs             1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+tmpfs             1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+tmpfs             3.8G  7.3M  3.8G   1% /tmp
+/dev/mapper/root  475G   17G  458G   4% /var/log
+/dev/mapper/root  475G   17G  458G   4% /home
+/dev/mapper/root  475G   17G  458G   4% /var/cache/pacman/pkg
+/dev/nvme0n1p1    2.0G  101M  1.9G   5% /boot
+tmpfs             772M  148K  772M   1% /run/user/1000
+
+mem stuff:
+               total        used        free      shared  buff/cache   available
+Mem:           7.5Gi       3.4Gi       3.1Gi       359Mi       1.7Gi       4.1Gi
+Swap:          3.8Gi       1.2Gi       2.6Gi
+
+cpu stuff:
+11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+8
+     22 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/0
+     23 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/1
+     29 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/2
+     35 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/3
+     41 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/4
+     47 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/5
+     53 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/6
+     59 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/7
+
+big mem hogs:
+USER %CPU %MEM COMMAND
+vv 19.2 19.6 claude
+vv 5.4 3.2 claude
+vv 0.6 2.6 /usr/lib/chromium/chromium
+vv 2.0 2.4 /usr/lib/libreoffice/program/soffice.bin
+vv 0.0 2.2 /usr/bin/swayosd-server
+
+big cpu hogs:
+USER %CPU %MEM COMMAND
+vv 19.2 19.6 claude
+vv 5.4 3.2 claude
+vv 2.0 2.4 /usr/lib/libreoffice/program/soffice.bin
+vv 1.9 1.0 Hyprland
+vv 1.2 0.6 nvim
